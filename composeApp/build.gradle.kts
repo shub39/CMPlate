@@ -2,10 +2,7 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
-
-val appName = "Template"
-val version = "1.0.0"
-val versionCode = 1
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -15,6 +12,15 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.buildKonfig)
+}
+
+buildkonfig {
+    packageName = "com.kmp.template"
+
+    defaultConfigs {
+        buildConfigField(STRING, "name", "value")
+    }
 }
 
 kotlin {
@@ -132,7 +138,7 @@ android {
             )
         }
         debug {
-            resValue("string", "app_name", "$appName Debug")
+            resValue("string", "app_name", "Debug")
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
         }
