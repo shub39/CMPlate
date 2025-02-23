@@ -8,8 +8,8 @@ androidx-lifecycle = "2.8.4"
 compose-multiplatform = "1.7.3"
 compose-adaptive = "1.0.1"
 koin = "4.0.1"
-datastore = "1.1.2"
-kotlin = "2.1.0"
+#datastore = "1.1.2"
+kotlin = "2.1.20-RC"
 colorpicker = "1.1.2"
 materialKolor = "2.0.1"
 splashScreen = "1.0.1"
@@ -17,12 +17,12 @@ landscapist = "2.4.2"
 navigationCompose = "2.8.0-alpha10"
 kotlinSerialization = "1.7.3"
 kotlinx-coroutines = "1.10.1"
-ksp = "2.1.0-1.0.29"
-sqlite = "2.5.0-alpha13"
-room = "2.7.0-alpha13"
+#ksp = "2.1.0-1.0.29"
+#sqlite = "2.5.0-alpha13"
+#room = "2.7.0-alpha13"
 ktor = "3.0.3"
 composeIcons = "1.1.1"
-buildKonfig = "0.15.2"
+#buildKonfig = "0.15.2"
 
 [libraries]
 # Jetbrains
@@ -48,13 +48,13 @@ koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
 koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" }
 
-# DataStore
-androidx-datastore-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastore" }
-
-# Room
-androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
+## DataStore
+#androidx-datastore-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastore" }
+#
+## Room
+#androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+#androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+#sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 
 # Others
 materialKolor = { module = "com.materialkolor:material-kolor", version.ref = "materialKolor" }
@@ -71,9 +71,9 @@ composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-mu
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-room = { id = "androidx.room", version.ref = "room" }
-buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
+#ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+#room = { id = "androidx.room", version.ref = "room" }
+#buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
 
 [bundles]
 ktor = [

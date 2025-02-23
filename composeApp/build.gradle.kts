@@ -1,8 +1,8 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.compose.reload.ComposeHotRun
+import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
-import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -10,17 +10,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.jetbrains.kotlin.serialization)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.room)
-    alias(libs.plugins.buildKonfig)
-}
-
-buildkonfig {
-    packageName = "com.kmp.template"
-
-    defaultConfigs {
-        buildConfigField(STRING, "name", "value")
-    }
+    id("org.jetbrains.compose.hot-reload") version "1.0.0-dev-59"
 }
 
 kotlin {
@@ -33,10 +23,6 @@ kotlin {
         }
     }
 
-    room {
-        schemaDirectory("$projectDir/schemas")
-    }
-
     androidTarget {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
@@ -47,21 +33,7 @@ kotlin {
     
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        moduleName = "composeApp"
-        browser {
-            val rootDirPath = project.rootDir.path
-            val projectDirPath = project.projectDir.path
-            commonWebpackConfig {
-                outputFileName = "composeApp.js"
-                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    static = (static ?: mutableListOf()).apply {
-                        // Serve sources to debug inside browser
-                        add(rootDirPath)
-                        add(projectDirPath)
-                    }
-                }
-            }
-        }
+        browser()
         binaries.executable()
     }
     
@@ -73,10 +45,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
-            implementation(libs.androidx.datastore.core)
             implementation(libs.androidx.core.splashscreen)
-            implementation(libs.androidx.room.runtime)
-            implementation(libs.sqlite.bundled)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -103,12 +72,6 @@ kotlin {
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
-            implementation(libs.androidx.datastore.core)
-            implementation(libs.androidx.room.runtime)
-            implementation(libs.sqlite.bundled)
-        }
-        dependencies {
-            ksp(libs.androidx.room.compiler)
         }
     }
 }
@@ -160,6 +123,10 @@ dependencies {
     debugImplementation(compose.uiTooling)
 }
 
+composeCompiler {
+    featureFlags.add(ComposeFeatureFlag.OptimizeNonSkippingGroups)
+}
+
 compose.desktop {
     application {
         mainClass = "com.kmp.template.MainKt"
@@ -170,4 +137,15 @@ compose.desktop {
             packageVersion = "1.0.0"
         }
     }
+}
+
+tasks.register<Copy>("copyWasmArtifacts") {
+    dependsOn("wasmJsBrowserDistribution")
+
+    from(layout.buildDirectory.dir("dist/wasmJs/productionExecutable"))
+    into(layout.projectDirectory.dir("site"))
+}
+
+tasks.register<ComposeHotRun>("runHot") {
+    mainClass.set("com.kmp.template.MainKt")
 }
