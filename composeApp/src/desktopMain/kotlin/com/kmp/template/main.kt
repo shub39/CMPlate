@@ -1,16 +1,21 @@
 package com.kmp.template
 
-import androidx.compose.ui.window.Window
-import androidx.compose.ui.window.application
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.WindowState
+import androidx.compose.ui.window.singleWindowApplication
 import com.kmp.template.di.initKoin
+import org.jetbrains.compose.reload.DevelopmentEntryPoint
 
-fun main() = application {
+fun main() {
     initKoin()
 
-    Window(
-        onCloseRequest = ::exitApplication,
-        title = "Template",
+    singleWindowApplication(
+        alwaysOnTop = true,
+        title = "Hot Reload",
+        state = WindowState(height = 800.dp, width = 800.dp)
     ) {
-        App()
+        DevelopmentEntryPoint {
+            App()
+        }
     }
 }
