@@ -10,7 +10,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.jetbrains.kotlin.serialization)
-    id("org.jetbrains.compose.hot-reload") version "1.0.0-dev-59"
+    id("org.jetbrains.compose.hot-reload") version "1.0.0-alpha01"
 }
 
 kotlin {
