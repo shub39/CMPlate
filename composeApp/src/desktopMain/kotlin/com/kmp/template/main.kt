@@ -3,6 +3,7 @@ package com.kmp.template
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.singleWindowApplication
+import com.kmp.template.app.App
 import com.kmp.template.di.initKoin
 import org.jetbrains.compose.reload.DevelopmentEntryPoint
 

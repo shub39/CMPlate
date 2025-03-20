@@ -2,6 +2,7 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.compose.reload.ComposeHotRun
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -10,7 +11,25 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.jetbrains.kotlin.serialization)
-    id("org.jetbrains.compose.hot-reload") version "1.0.0-alpha01"
+    alias(libs.plugins.hotreload)
+    alias(libs.plugins.buildKonfig)
+    alias(libs.plugins.aboutLibraries)
+}
+
+val appName = "Template"
+val appPackageName = "com.kmp.template"
+val appVersionName = "1.0.0"
+val appVersionCode = 1000
+
+
+buildkonfig {
+    packageName = appPackageName
+
+    defaultConfigs {
+        buildConfigField(STRING, "packageName", appPackageName)
+        buildConfigField(STRING, "versionName", appVersionName)
+        buildConfigField(STRING, "versionCode", appVersionCode.toString())
+    }
 }
 
 kotlin {
@@ -61,12 +80,10 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
-            implementation(libs.bundles.ktor)
             implementation(libs.materialKolor)
             implementation(libs.colorpicker.compose)
-            implementation(libs.landscapist.coil)
-            implementation(libs.landscapist.placeholder)
             implementation(libs.composeIcons.fontAwesome)
+            implementation(libs.aboutLibraries)
             api(libs.koin.core)
         }
         desktopMain.dependencies {
@@ -77,15 +94,15 @@ kotlin {
 }
 
 android {
-    namespace = "com.kmp.template"
+    namespace = appPackageName
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.kmp.template"
+        applicationId = appPackageName
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = appVersionCode
+        versionName = appVersionName
     }
     packaging {
         resources {
@@ -101,7 +118,7 @@ android {
             )
         }
         debug {
-            resValue("string", "app_name", "Debug")
+            resValue("string", "app_name", "$appName Debug")
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
         }
@@ -133,8 +150,8 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.kmp.template"
-            packageVersion = "1.0.0"
+            packageName = appPackageName
+            packageVersion = appVersionName
         }
     }
 }

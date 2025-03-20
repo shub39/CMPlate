@@ -5,23 +5,23 @@ so that I start working on a project in the morning and ship it by evening.
 
 ### Targeted platforms
 
-> No IOS because of hardware limitations and beta status
+> No IOS because of hardware limitations :(
 
 - Android
 - Desktop
 - Web via kotlin/wasm (only for previews)
 
-### Libraries (besides android and Jetbrains stuff)
+### Libraries 
 
 > See [version catalog](gradle/libs.versions.toml) for more info
 
 - Splashscreen for android
 - Kotlinx Serialization Json
 - Compose Navigation
-- Network requests with Ktor
+- Network requests with Ktor (disabled by default)
 - Dependency Injection with Koin
-- Saving settings with Datastore preferences
-- Database implementation with Room and SQLite
+- Saving settings with Datastore preferences (disabled by default)
+- Database implementation with Room and SQLite (disabled by default)
 - [BuildKonfig](https://github.com/yshrsmz/BuildKonfig)
 - [MaterialKolor](https://github.com/jordond/MaterialKolor) for theming
 - [Landscapist](https://github.com/skydoves/landscapist) for images

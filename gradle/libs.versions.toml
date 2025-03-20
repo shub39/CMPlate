@@ -9,11 +9,11 @@ compose-multiplatform = "1.7.3"
 compose-adaptive = "1.0.1"
 koin = "4.0.1"
 #datastore = "1.1.2"
-kotlin = "2.1.20-RC"
+kotlin = "2.1.20-RC3"
 colorpicker = "1.1.2"
 materialKolor = "2.0.1"
 splashScreen = "1.0.1"
-landscapist = "2.4.2"
+#landscapist = "2.4.2"
 navigationCompose = "2.8.0-alpha10"
 kotlinSerialization = "1.7.3"
 kotlinx-coroutines = "1.10.1"
@@ -22,7 +22,9 @@ kotlinx-coroutines = "1.10.1"
 #room = "2.7.0-alpha13"
 ktor = "3.0.3"
 composeIcons = "1.1.1"
-#buildKonfig = "0.15.2"
+hotreload = "1.0.0-alpha02"
+buildKonfig = "0.17.0"
+aboutLibraries = '11.4.0'
 
 [libraries]
 # Jetbrains
@@ -35,14 +37,15 @@ jetbrains-compose-navigation = { group = "org.jetbrains.androidx.navigation", na
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerialization" }
 
 # Ktor
-ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
-ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
-ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
-ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
-ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
+#ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+#ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+#ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+#ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+#ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 
 # Koin
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
@@ -58,10 +61,11 @@ koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", ver
 
 # Others
 materialKolor = { module = "com.materialkolor:material-kolor", version.ref = "materialKolor" }
-landscapist-coil = { module = "com.github.skydoves:landscapist-coil3", version.ref = "landscapist" }
-landscapist-placeholder = { module = "com.github.skydoves:landscapist-placeholder", version.ref = "landscapist" }
+#landscapist-coil = { module = "com.github.skydoves:landscapist-coil3", version.ref = "landscapist" }
+#landscapist-placeholder = { module = "com.github.skydoves:landscapist-placeholder", version.ref = "landscapist" }
 colorpicker-compose = { module = "com.github.skydoves:colorpicker-compose", version.ref = "colorpicker" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "splashScreen" }
+aboutLibraries = { group = "com.mikepenz", name = "aboutlibraries-compose", version.ref = "aboutLibraries" }
 composeIcons-fontAwesome = { module = "br.com.devsrsouza.compose.icons:font-awesome", version.ref = "composeIcons" }
 
 [plugins]
@@ -71,15 +75,18 @@ composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-mu
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+hotreload = { id = "org.jetbrains.compose.hot-reload", version.ref = "hotreload" }
 #ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 #room = { id = "androidx.room", version.ref = "room" }
-#buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
+buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
+aboutLibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutLibraries" }
 
 [bundles]
-ktor = [
-    "ktor-client-core",
-    "ktor-client-content-negotiation",
-    "ktor-client-auth",
-    "ktor-client-logging",
-    "ktor-serialization-kotlinx-json",
-]
+#ktor = [
+#    "ktor-client-core",
+#    "ktor-client-okhttp",
+#    "ktor-client-content-negotiation",
+#    "ktor-client-auth",
+#    "ktor-client-logging",
+#    "ktor-serialization-kotlinx-json",
+#]

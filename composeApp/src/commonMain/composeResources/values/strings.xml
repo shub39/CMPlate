@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="system">System</string>
+    <string name="done">Done</string>
     <string name="not_found">Not Found</string>
     <string name="no_results">No Results</string>
     <string name="unknown">Unknown Error!</string>
