@@ -156,6 +156,7 @@ compose.desktop {
     }
 }
 
+// builds wasmjs production executable and copies it to composeApp/site
 tasks.register<Copy>("copyWasmArtifacts") {
     dependsOn("wasmJsBrowserDistribution")
 
@@ -163,6 +164,7 @@ tasks.register<Copy>("copyWasmArtifacts") {
     into(layout.projectDirectory.dir("site"))
 }
 
+// Hot Reload
 tasks.register<ComposeHotRun>("runHot") {
     mainClass.set("com.kmp.template.MainKt")
 }
