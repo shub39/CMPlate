@@ -1,20 +1,20 @@
 [versions]
-agp = "8.10.0"
-android-compileSdk = "35"
+agp = "8.10.1"
+android-compileSdk = "36"
 android-minSdk = "29"
-android-targetSdk = "35"
+android-targetSdk = "36"
 androidx-activityCompose = "1.10.1"
-androidx-lifecycle = "2.8.4"
-compose-multiplatform = "1.8.0"
-compose-adaptive = "1.0.1"
-koin = "4.0.1"
+androidx-lifecycle = "2.9.0"
+compose-multiplatform = "1.8.1"
+compose-adaptive = "1.1.1"
+koin = "4.0.4"
 #datastore = "1.1.2"
-kotlin = "2.1.20"
+kotlin = "2.1.21"
 colorpicker = "1.1.2"
 materialKolor = "2.1.1"
 splashScreen = "1.0.1"
 #landscapist = "2.4.2"
-navigationCompose = "2.8.0-alpha10"
+navigationCompose = "2.8.0-alpha13"
 kotlinSerialization = "1.8.1"
 kotlinx-coroutines = "1.10.2"
 #ksp = "2.1.0-1.0.29"
@@ -22,9 +22,10 @@ kotlinx-coroutines = "1.10.2"
 #room = "2.7.0-alpha13"
 #ktor = "3.0.3"
 composeIcons = "1.1.1"
-hotreload = "1.0.0-alpha09"
-buildKonfig = "0.17.0"
-aboutLibraries = '12.1.0'
+hotreload = "1.0.0-alpha10"
+buildKonfig = "0.17.1"
+aboutLibraries = '12.2.0'
+materialIconsCore = "1.7.3"
 
 [libraries]
 # Jetbrains
@@ -60,6 +61,7 @@ koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", ver
 #sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 
 # Others
+material-icons-core = { module = "org.jetbrains.compose.material:material-icons-core", version.ref = "materialIconsCore" }
 materialKolor = { module = "com.materialkolor:material-kolor", version.ref = "materialKolor" }
 #landscapist-coil = { module = "com.github.skydoves:landscapist-coil3", version.ref = "landscapist" }
 #landscapist-placeholder = { module = "com.github.skydoves:landscapist-placeholder", version.ref = "landscapist" }

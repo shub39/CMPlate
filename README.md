@@ -30,6 +30,6 @@ so that I start working on a project in the morning and ship it by evening.
 
 ### TODO
 - [ ] Figure out desktop releases (see [spmp](https://github.com/toasterofbread/spmp))
-- [ ] Add actions
+- [ ] Add CI actions for webapp
 - [ ] Build sample and deploy
 - [ ] Document everything
