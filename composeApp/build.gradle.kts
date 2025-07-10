@@ -1,8 +1,7 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.compose.reload.ComposeHotRun
-import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
-import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.compose.reload.gradle.ComposeHotRun
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -16,12 +15,13 @@ plugins {
     alias(libs.plugins.aboutLibraries)
 }
 
+// Set all version info here
 val appName = "Template"
 val appPackageName = "com.kmp.template"
 val appVersionName = "1.0.0"
 val appVersionCode = 1000
 
-
+// Buildconfig to all sourcesets by appPackageName
 buildkonfig {
     packageName = appPackageName
 
@@ -44,7 +44,7 @@ kotlin {
 
     androidTarget {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+            jvmTarget.set(JvmTarget.JVM_17)
         }
     }
     
@@ -75,6 +75,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.compose.adaptive)
+            implementation(libs.material.icons.core)
             implementation(compose.material3)
             implementation(libs.jetbrains.compose.navigation)
             implementation(libs.kotlinx.serialization.json)
@@ -124,8 +125,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         compose = true
@@ -140,10 +141,7 @@ dependencies {
     debugImplementation(compose.uiTooling)
 }
 
-composeCompiler {
-    featureFlags.add(ComposeFeatureFlag.OptimizeNonSkippingGroups)
-}
-
+// Desktop config
 compose.desktop {
     application {
         mainClass = "com.kmp.template.MainKt"
@@ -154,14 +152,6 @@ compose.desktop {
             packageVersion = appVersionName
         }
     }
-}
-
-// builds wasmjs production executable and copies it to composeApp/site
-tasks.register<Copy>("copyWasmArtifacts") {
-    dependsOn("wasmJsBrowserDistribution")
-
-    from(layout.buildDirectory.dir("dist/wasmJs/productionExecutable"))
-    into(layout.projectDirectory.dir("site"))
 }
 
 // Hot Reload

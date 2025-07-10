@@ -1,11 +1,11 @@
-# KMP-Template
+# CMP-Template
 
 The goal is to have a KMP project template with all the knowledge I have gathered 
 so that I start working on a project in the morning and ship it by evening.
 
 ### Targeted platforms
 
-> No IOS because of hardware limitations :(
+> No IOS because of hardware limitations ( I don't have a mac yet )
 
 - Android
 - Desktop
@@ -33,3 +33,4 @@ so that I start working on a project in the morning and ship it by evening.
 - [ ] Add CI actions for webapp
 - [ ] Build sample and deploy
 - [ ] Document everything
+- [ ] Setup CI for tests
